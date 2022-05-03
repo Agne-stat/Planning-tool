@@ -40,6 +40,7 @@ export default function JokesRoute() {
       <main className="jokes-main">
         <div className="container">
           <div className="jokes-list">
+          <Link to=".">Get a random todo</Link>
             <p>Item from to do list</p>
             <ul>
             {data.todoListItems.map((todo) => (
