@@ -24,3 +24,11 @@ model DayPlan {
   name      String
   startTime String
 }
+
+model ExpensesPlan {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  cost      String
+}

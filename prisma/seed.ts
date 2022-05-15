@@ -12,6 +12,11 @@ async function seed() {
       return db.dayPlan.create({ data: dayPlan });
     })
   );
+  await Promise.all(
+    getExpensesPlan().map((expensesPlan) => {
+      return db.expensesPlan.create({ data: expensesPlan });
+    })
+  );
 }
 
 seed();
@@ -29,6 +34,15 @@ function getDayPlan() {
     {
       name: "Meeting",
       startTime: '11:00',
+    },
+  ];
+}
+
+function getExpensesPlan() {
+  return [
+    {
+      name: "Lunc",
+      cost: '8',
     },
   ];
 }
