@@ -1,4 +1,6 @@
 import { LiveReload, Outlet } from "@remix-run/react";
+import { Link } from "@remix-run/react/node_modules/react-router-dom";
+import Calendor from "./components/Calendor";
 
 export default function App() {
   return (
@@ -8,8 +10,14 @@ export default function App() {
         <title>Some app</title>
       </head>
       <body>
-        <Outlet />
-        <LiveReload />
+        <header>
+          <Link to='/'>Plan your day</Link>
+        </header>
+        <main>
+          <Calendor />
+          <Outlet />
+          <LiveReload />
+        </main>
       </body>
     </html>
   );

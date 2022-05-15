@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react/node_modules/react-router-dom";
+
 export default function CreateTodoRoute() {
   return (
     <div>
@@ -20,6 +22,11 @@ export default function CreateTodoRoute() {
           </button>
         </div>
       </form>
+      <button>
+        <Link to="/todo" className="button">
+          Cancel
+        </Link>
+      </button>
     </div>
   );
 }
