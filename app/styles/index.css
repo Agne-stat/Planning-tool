@@ -1,0 +1,37 @@
+.button {
+    cursor: pointer;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0.75em 0.75em;
+    border: 0;
+    border-radius: 4px;
+    outline-offset: 2px;
+}
+
+.button:hover{
+    opacity: 0.7;    
+}
+
+.button-link {
+    color: white;
+    text-decoration: none;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 186px;
+}
+.form-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1em;
+}

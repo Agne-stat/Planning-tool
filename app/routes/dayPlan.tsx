@@ -1,7 +1,13 @@
-import { LoaderFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 import { json } from "@remix-run/node";
+
+import stylesUrl from "~/styles/index.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: stylesUrl }];
+};
 
 type LoaderData = {
   dayPlanListItems: Array<{ id: string; name: string; startTime: string; }>;
@@ -18,7 +24,6 @@ export default function DayPlanRoute() {
   const data = useLoaderData<LoaderData>();
   
   return (
-    <div>
       <main>
         <Outlet />
         <div>
@@ -30,12 +35,11 @@ export default function DayPlanRoute() {
               ))}
           </ul>
         </div>
-        <button>
-          <Link to="create" className="button">
-            New item
+        <button className="button">
+          <Link to="create" className="button-link">
+            New plan
           </Link>
         </button>
       </main>
-    </div>
   );
 }

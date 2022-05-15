@@ -1,6 +1,17 @@
-import { LiveReload, Outlet } from "@remix-run/react";
+import { Links, LiveReload, Outlet } from "@remix-run/react";
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
 import Calendor from "./components/Calendor";
+import globalStylesUrl from "./styles/global.css";
+import { LinksFunction } from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: globalStylesUrl,
+    },
+  ];
+};
 
 export default function App() {
   return (
@@ -8,12 +19,13 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <title>Some app</title>
+        <Links />
       </head>
       <body>
-        <header>
-          <Link to='/'>Plan your day</Link>
-        </header>
         <main>
+          <h1>
+            <Link to='/' className='heading-link'>Plan your day</Link>
+          </h1>
           <Calendor />
           <Outlet />
           <LiveReload />

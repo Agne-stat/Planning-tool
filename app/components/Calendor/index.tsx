@@ -2,12 +2,13 @@ import moment from 'moment'
 
 
 export default function Calendor() {
-    let now = moment().format('LLLL');        
+    let now = moment().calendar(); 
+           
   return (
     <div>
-      <h1>Calendor</h1>
+      <h2>Calendor</h2>
       <div>
-          <h2>{now}</h2>
+          <p>{now}</p>
       </div>
     </div>
   );

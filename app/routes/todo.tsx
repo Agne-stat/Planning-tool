@@ -1,7 +1,13 @@
-import { LoaderFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction } from "@remix-run/node";
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 import { json } from "@remix-run/node";
+
+import stylesUrl from "~/styles/index.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: stylesUrl }];
+};
 
 type LoaderData = {
   todoListItems: Array<{ id: string; name: string }>;
@@ -17,7 +23,6 @@ export const loader: LoaderFunction = async () => {
 export default function TodoRoute() {
   const data = useLoaderData<LoaderData>();
   return (
-    <div>
       <main>
         <Outlet />
         <div>
@@ -29,12 +34,11 @@ export default function TodoRoute() {
               ))}
           </ul>
         </div>
-        <button>
-          <Link to="create" className="button">
+        <button className="button">
+          <Link to="create" className="button-link">
             New to do
           </Link>
         </button>
       </main>
-    </div>
   );
 }

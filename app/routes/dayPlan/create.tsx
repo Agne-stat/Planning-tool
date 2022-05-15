@@ -1,8 +1,14 @@
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
-import type { ActionFunction } from "@remix-run/node";
+import type { ActionFunction, LinksFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-
 import { db } from "~/utils/db.server";
+
+import stylesUrl from "~/styles/index.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: stylesUrl }];
+};
+
 
 export const action: ActionFunction = async ({
   request,
@@ -11,8 +17,7 @@ export const action: ActionFunction = async ({
   const name = form.get("name");
   const startTime = form.get("startTime");
   const content = form.get("content");
-  // we do this type check to be extra sure and to make TypeScript happy
-  // we'll explore validation next!
+
   if (
     typeof name !== "string" ||
     typeof startTime !== "string" ||
@@ -29,7 +34,6 @@ export const action: ActionFunction = async ({
 export default function CreateDayPlanRoute() {
   return (
     <div>
-      <p>Add </p>
       <form method="post">
         <div>
           <label>
@@ -46,17 +50,20 @@ export default function CreateDayPlanRoute() {
             Content: <input type="text" name="content" />
           </label>
         </div>
-        <div>
+        <div className="form-buttons-container">
           <button type="submit" className="button">
             Add
           </button>
+          <button className="button">
+            <Link to="/dayPlan" className="button-link">
+              Cancel
+            </Link>
+          </button>
         </div>
       </form>
-      <button>
-        <Link to="/dayPlan" className="button">
-          Cancel
-        </Link>
-      </button>
     </div>
   );
 }
+
+
+

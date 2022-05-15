@@ -1,0 +1,12 @@
+.heading-link {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 30px;
+    color: black;
+}
+
+h1:hover {
+    color: blueviolet;
+}
