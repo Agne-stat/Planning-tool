@@ -23,6 +23,7 @@ model DayPlan {
   updatedAt DateTime @updatedAt
   name      String
   startTime String
+  content   String
 }
 
 model ExpensesPlan {

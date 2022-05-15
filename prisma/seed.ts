@@ -34,6 +34,7 @@ function getDayPlan() {
     {
       name: "Meeting",
       startTime: '11:00',
+      content: 'Meeting with lalaladkjajksdhasdasdjashdkjahsd hdasdhajkshdas hdha dkah dha dakshd shd',
     },
   ];
 }

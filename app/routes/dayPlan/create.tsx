@@ -10,15 +10,17 @@ export const action: ActionFunction = async ({
   const form = await request.formData();
   const name = form.get("name");
   const startTime = form.get("startTime");
+  const content = form.get("content");
   // we do this type check to be extra sure and to make TypeScript happy
   // we'll explore validation next!
   if (
     typeof name !== "string" ||
-    typeof startTime !== "string") {
+    typeof startTime !== "string" ||
+    typeof content !== "string") {
     throw new Error(`Form not submitted correctly.`);
   }
 
-  const fields = { name, startTime };
+  const fields = { name, startTime, content };
 
   const dayPlan = await db.dayPlan.create({ data: fields });
   return redirect(`/dayPlan/${dayPlan.id}`);
@@ -37,6 +39,11 @@ export default function CreateDayPlanRoute() {
         <div>
           <label>
             Task: <input type="text" name="name" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Content: <input type="text" name="content" />
           </label>
         </div>
         <div>

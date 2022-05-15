@@ -46,7 +46,7 @@ export default function TodoRoute() {
 
   return (
     <div>
-      <p>{data.dayPlan.name}</p>
+      <p>{data.dayPlan.content}</p>
       <form method="post">
         <input
           type="hidden"
