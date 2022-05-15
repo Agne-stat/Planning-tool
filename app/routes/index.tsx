@@ -1,7 +1,5 @@
 
-import { Link, Outlet } from "@remix-run/react";
-import Calendor from "~/components/Calendor";
-
+import { Link } from "@remix-run/react";
 
 export default function IndexRoute() {  
   return (

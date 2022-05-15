@@ -16,3 +16,11 @@ model Todo {
   updatedAt DateTime @updatedAt
   name      String
 }
+
+model DayPlan {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  startTime String
+}
