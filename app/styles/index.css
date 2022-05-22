@@ -4,16 +4,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+    background-color: #97ABDF;
     color: white;
     font-weight: bold;
     line-height: 1;
-    font-size: 0.75rem;
+    font-size: 14px;
     margin: 0;
     padding: 0.75em 0.75em;
     border: 0;
-    border-radius: 4px;
     outline-offset: 2px;
+    width: 100px;
 }
 
 .button:hover{
@@ -27,11 +27,57 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 186px;
+    width: 250px;
 }
 .form-buttons-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 1em;
+}
+
+.routes-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.routes-buttons {
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: -5px 10px 8px #acacac;
+}
+
+.routes-buttons a{
+    display: block;
+    text-decoration: none;
+    padding: 20px 10px;
+    background-color: #E5E5E5;
+    color: #97ABDF;
+    font-size: 18px;
+}
+
+.routes-buttons a:hover{
+    background-color: #97ABDF;
+    color: #eee;
+}
+
+ul li a {
+ text-decoration: none;
+ color: #000;
+ font-size: 18px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.form input {
+    border: none;
+    border-bottom: 1px solid #000;
 }

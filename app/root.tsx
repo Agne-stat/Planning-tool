@@ -2,6 +2,7 @@ import { Links, LiveReload, Outlet } from "@remix-run/react";
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
 import Calendor from "./components/Calendor";
 import globalStylesUrl from "./styles/global.css";
+import calendorStylesUrl from "./styles/components/calendor.css";
 import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
@@ -9,6 +10,10 @@ export const links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: globalStylesUrl,
+    },
+    {
+      rel: "stylesheet",
+      href: calendorStylesUrl,
     },
   ];
 };

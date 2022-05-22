@@ -23,22 +23,24 @@ export const loader: LoaderFunction = async () => {
 export default function TodoRoute() {
   const data = useLoaderData<LoaderData>();
   return (
-      <main>
+      <div className="container">
         <Outlet />
         <div>
-          <ul>
+          <div>
+            <ul>
             {data.todoListItems.map((todo) => (
                 <li key={todo.id}>
                   <Link to={todo.id}>{todo.name}</Link>
                 </li>
               ))}
-          </ul>
-        </div>
-        <button className="button">
-          <Link to="create" className="button-link">
+            </ul>
+          </div>
+          <button className="button">
+            <Link to="create" className="button-link">
             New to do
-          </Link>
-        </button>
-      </main>
+            </Link>
+          </button>
+        </div>
+      </div>
   );
 }

@@ -24,23 +24,26 @@ export const action: ActionFunction = async ({
 
   const fields = { name, cost };
 
-  const expensesPlan = await db.expensesPlan.create({ data: fields });
-  return redirect(`/expensesPlan/${expensesPlan.id}`);
+  await db.expensesPlan.create({ data: fields });
+  return redirect(`/expensesPlan`);
 };
 
 export default function CreateExpensesPlanRoute() {
   return (
     <div>
+      <h3>New expense:</h3>
       <form method="post">
-        <div>
+        <div className="form">
           <label>
-            Cost: <input type="text" name="cost" />
+            Cost: 
           </label>
+          <input type="text" name="cost" />
         </div>
-        <div>
+        <div className="form">
           <label>
-            Purchase: <input type="text" name="name" />
+            Purchase: 
           </label>
+          <input type="text" name="name" />
         </div>
         <div className="form-buttons-container">
           <button type="submit" className="button">

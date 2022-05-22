@@ -24,22 +24,24 @@ export default function DayPlanRoute() {
   const data = useLoaderData<LoaderData>();
   
   return (
-      <main>
+      <div className="container">
         <Outlet />
         <div>
-          <ul>
+          <div>
+            <ul>
             {data.dayPlanListItems.map((dayPlan) => (
                 <li key={dayPlan.id}>
                   <Link to={dayPlan.id}>{dayPlan.startTime +" - "+ dayPlan.name}</Link>
                 </li>
               ))}
-          </ul>
-        </div>
-        <button className="button">
-          <Link to="create" className="button-link">
+            </ul>
+          </div>
+          <button className="button">
+            <Link to="create" className="button-link">
             New plan
-          </Link>
-        </button>
-      </main>
+            </Link>
+          </button>
+        </div>
+      </div>
   );
 }

@@ -27,28 +27,32 @@ export const action: ActionFunction = async ({
 
   const fields = { name, startTime, content };
 
-  const dayPlan = await db.dayPlan.create({ data: fields });
-  return redirect(`/dayPlan/${dayPlan.id}`);
+  await db.dayPlan.create({ data: fields });
+  return redirect(`/dayPlan`);
 };
 
 export default function CreateDayPlanRoute() {
   return (
     <div>
+      <h3>New plan:</h3>
       <form method="post">
-        <div>
+        <div className="form">
           <label>
-            Time: <input type="text" name="startTime" />
+            Time: 
           </label>
+          <input type="text" name="startTime" />
         </div>
-        <div>
+        <div className="form">
           <label>
-            Task: <input type="text" name="name" />
+            Task: 
           </label>
+          <input type="text" name="name" />
         </div>
-        <div>
+        <div className="form">
           <label>
-            Content: <input type="text" name="content" />
+            Content: 
           </label>
+          <input type="text" name="content" />
         </div>
         <div className="form-buttons-container">
           <button type="submit" className="button">

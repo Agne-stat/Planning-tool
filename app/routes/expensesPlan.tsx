@@ -24,22 +24,24 @@ export default function ExpensesPlanRoute() {
   const data = useLoaderData<LoaderData>();
   
   return (
-      <main>
+      <div className="container">
         <Outlet />
         <div>
-          <ul>
-            {data.expensesPlanListItems.map((expensesPlan) => (
+          <div>
+            <ul>
+              {data.expensesPlanListItems.map((expensesPlan) => (
                 <li key={expensesPlan.id}>
                   <Link to={expensesPlan.id}>{expensesPlan.name +" - "+ expensesPlan.cost}</Link>
                 </li>
               ))}
-          </ul>
-        </div>
-        <button className="button">
-          <Link to="create" className="button-link">
+            </ul>
+          </div>
+          <button className="button">
+            <Link to="create" className="button-link">
             New purchase
-          </Link>
-        </button>
-      </main>
+            </Link>
+          </button>
+        </div>
+      </div>
       );
 }

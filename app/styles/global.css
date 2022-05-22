@@ -1,12 +1,21 @@
+body {
+    margin: 0;
+}
+
+main {
+    max-width: 540px;
+    margin: 20px auto;
+}
+
 .heading-link {
     text-decoration: none;
 }
 
-h1 {
+h1 a{
     font-size: 30px;
-    color: black;
+    color: #000;
 }
 
-h1:hover {
-    color: blueviolet;
+h1 a:hover {
+    color:#97ABDF;
 }

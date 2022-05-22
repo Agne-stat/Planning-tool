@@ -1,0 +1,22 @@
+.calendor-container {
+    width: 100%;
+}
+
+h2 {
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+.calendor-wrapper {
+    display: flex;
+    height:250px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E5E5;
+}
+
+.time {
+    display: block;
+    margin-top: 5px;
+}

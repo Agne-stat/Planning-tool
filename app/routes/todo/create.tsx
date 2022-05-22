@@ -22,18 +22,20 @@ export const action: ActionFunction = async ({
 
   const fields = { name };
 
-  const todo = await db.todo.create({ data: fields });
-  return redirect(`/todo/${todo.id}`);
+  await db.todo.create({ data: fields });
+  return redirect(`/todo`);
 };
 
 export default function CreateTodoRoute() {
   return (
     <div >
+      <h3>New todo:</h3>
       <form method="post">
-        <div>
+        <div className="form">
           <label>
-            Task: <input type="text" name="name" />
+            Task: 
           </label>
+          <input type="text" name="name" />
         </div>
         <div className="form-buttons-container">
           <button type="submit" className="button">
