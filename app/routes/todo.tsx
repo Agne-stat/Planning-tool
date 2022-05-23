@@ -1,7 +1,6 @@
-import { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction,json } from "@remix-run/node";
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 import { db } from "~/utils/db.server";
-import { json } from "@remix-run/node";
 
 import stylesUrl from "~/styles/index.css";
 
@@ -27,9 +26,9 @@ export default function TodoRoute() {
         <Outlet />
         <div>
           <ul>
-            {data.todoListItems.map((todo) => (
-                <li key={todo.id}>
-                  <Link to={todo.id}>{todo.name}</Link>
+            {data.todoListItems.map(({name, id}) => (
+                <li key={id}>
+                  <Link to={id}>{name}</Link>
                 </li>
               ))}
           </ul>

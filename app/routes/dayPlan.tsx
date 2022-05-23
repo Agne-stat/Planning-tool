@@ -1,7 +1,6 @@
-import { LinksFunction, LoaderFunction } from "@remix-run/node";
+import { LinksFunction, LoaderFunction, json } from "@remix-run/node";
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 import { db } from "~/utils/db.server";
-import { json } from "@remix-run/node";
 
 import stylesUrl from "~/styles/index.css";
 
@@ -28,9 +27,9 @@ export default function DayPlanRoute() {
         <Outlet />
         <div>
           <ul>
-            {data.dayPlanListItems.map((dayPlan) => (
-                <li key={dayPlan.id}>
-                  <Link to={dayPlan.id}>{dayPlan.startTime +" - "+ dayPlan.name}</Link>
+            {data.dayPlanListItems.map(({startTime, name, id}) => (
+                <li key={id}>
+                  <Link to={id}>{startTime +" - "+ name}</Link>
                 </li>
               ))}
           </ul>

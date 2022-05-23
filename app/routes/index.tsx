@@ -20,11 +20,3 @@ export default function IndexRoute() {
     </div>
   );
 }
-
-
-
-
-
-
-
-

@@ -1,6 +1,5 @@
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
-import type { ActionFunction, LinksFunction } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
+import  { ActionFunction, LinksFunction, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
 import stylesUrl from "~/styles/index.css";

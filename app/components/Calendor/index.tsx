@@ -6,7 +6,7 @@ export default function Calendor() {
            
   return (
     <div>
-      <h2>Calendor</h2>
+      <h2>Calendar</h2>
       <div>
           <p>{now}</p>
       </div>
