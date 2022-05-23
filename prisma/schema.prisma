@@ -23,7 +23,7 @@ model DayPlan {
   updatedAt DateTime @updatedAt
   name      String
   startTime String
-  content   String
+  content   String?
 }
 
 model ExpensesPlan {
@@ -31,5 +31,5 @@ model ExpensesPlan {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   name      String
-  cost      String
+  cost      Int
 }

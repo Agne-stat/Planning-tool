@@ -10,7 +10,7 @@ export const links: LinksFunction = () => {
 };
 
 type LoaderData = {
-  expensesPlanListItems: Array<{ id: string; name: string; cost: string; }>;
+  expensesPlanListItems: Array<{ id: string; name: string; cost: number; }>;
 };
 
 export const loader: LoaderFunction = async () => {
@@ -31,7 +31,7 @@ export default function ExpensesPlanRoute() {
             <ul>
               {data.expensesPlanListItems.map((expensesPlan) => (
                 <li key={expensesPlan.id}>
-                  <Link to={expensesPlan.id}>{expensesPlan.name +" - "+ expensesPlan.cost}</Link>
+                  <Link to={expensesPlan.id}>{expensesPlan.name}</Link>
                 </li>
               ))}
             </ul>

@@ -13,16 +13,17 @@ export const action: ActionFunction = async ({
   request,
 }) => {
   const form = await request.formData();
+  
   const name = form.get("name");
   const cost = form.get("cost");
+  const formatedCost = Number(cost)
 
-  if (
-    typeof name !== "string" ||
-    typeof cost !== "string") {
+  if ( typeof name !== "string"){
+      
     throw new Error(`Form not submitted correctly.`);
   }
 
-  const fields = { name, cost };
+  const fields = { name, cost:formatedCost } 
 
   await db.expensesPlan.create({ data: fields });
   return redirect(`/expensesPlan`);
@@ -37,7 +38,7 @@ export default function CreateExpensesPlanRoute() {
           <label>
             Cost: 
           </label>
-          <input type="text" name="cost" />
+          <input type="number" name="cost" />
         </div>
         <div className="form">
           <label>

@@ -52,7 +52,7 @@ export default function CreateDayPlanRoute() {
           <label>
             Content: 
           </label>
-          <input type="text" name="content" />
+          <textarea  name="content" />
         </div>
         <div className="form-buttons-container">
           <button type="submit" className="button">

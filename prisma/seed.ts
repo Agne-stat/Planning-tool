@@ -43,7 +43,7 @@ function getExpensesPlan() {
   return [
     {
       name: "Lunc",
-      cost: '8',
+      cost: 8,
     },
   ];
 }

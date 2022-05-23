@@ -80,4 +80,11 @@ ul li a {
 .form input {
     border: none;
     border-bottom: 1px solid #000;
+    width: 150px;
+}
+
+.form textarea {
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 150px;
 }
