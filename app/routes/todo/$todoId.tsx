@@ -1,5 +1,4 @@
-import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect, json } from "@remix-run/node";
 import { useCatch, useLoaderData, useParams } from "@remix-run/react";
 import type { Todo } from "@prisma/client";
 
@@ -29,14 +28,9 @@ export const action: ActionFunction = async ({
       { status: 400 }
     );
   }
-  const todo = await db.todo.findUnique({
+  await db.todo.findUnique({
     where: { id: params.todoId },
   });
-  if (!todo) {
-    throw new Response("Can't delete what does not exist", {
-      status: 404,
-    });
-  }
   await db.todo.delete({ where: { id: params.todoId } });
   return redirect("/todo");
 };

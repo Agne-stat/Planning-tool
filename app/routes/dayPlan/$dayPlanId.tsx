@@ -1,5 +1,4 @@
-import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect, json } from "@remix-run/node";
 import { useCatch, useLoaderData, useParams } from "@remix-run/react";
 import type { DayPlan } from "@prisma/client";
 
@@ -29,14 +28,9 @@ export const action: ActionFunction = async ({
       { status: 400 }
     );
   }
-  const dayPlan = await db.dayPlan.findUnique({
+  await db.dayPlan.findUnique({
     where: { id: params.dayPlanId },
   });
-  if (!dayPlan) {
-    throw new Response("Can't delete what does not exist", {
-      status: 404,
-    });
-  }
   await db.dayPlan.delete({ where: { id: params.dayPlanId } });
   return redirect("/dayPlan");
 };

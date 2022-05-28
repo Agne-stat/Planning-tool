@@ -16,7 +16,7 @@ export default function Calendor() {
     <div className="calendor-container">
       <h2>{dateNow}</h2>
       <div className="calendor-wrapper">
-          Calendor placeholder
+          Calendar placeholder
       </div>
       <div className='time'>{timeNow}</div>
     </div>
