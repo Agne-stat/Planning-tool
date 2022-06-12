@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
+import { Form, useActionData } from "@remix-run/react";
 import  { ActionFunction, LinksFunction, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
@@ -8,21 +9,34 @@ export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
+const validateDayplanName = (name:string) => {
+  if (!name) {
+    return "Task field can not be empty";
+  } 
+};
+
+const validateDayplanStart = (startTime:Date) => {
+  if (!startTime) {
+    return "Time field can not be empty";
+  } 
+};
+
 
 export const action: ActionFunction = async ({
   request,
 }) => {
   const form = await request.formData();
+  const data = Object.fromEntries(form);
+
   const name = form.get("name");
   const startTime = form.get("startTime");
   const content = form.get("content");
 
-  if (
-    typeof name !== "string" ||
-    typeof startTime !== "string" ||
-    typeof content !== "string") {
-    throw new Error(`Form not submitted correctly.`);
-  }
+  const formErrors = {
+    name: validateDayplanName(data.name),
+    startTime: validateDayplanStart(data.startTime)
+  };
+  if (Object.values(formErrors).some(Boolean)) return { formErrors };
 
   const fields = { name, startTime, content };
 
@@ -31,10 +45,12 @@ export const action: ActionFunction = async ({
 };
 
 export default function CreateDayPlanRoute() {
+  const actionData = useActionData();
+
   return (
     <div>
       <h3>New plan:</h3>
-      <form method="post">
+      <Form method="post">
         <div className="form">
           <label>
             Time: 
@@ -63,7 +79,13 @@ export default function CreateDayPlanRoute() {
             </Link>
           </button>
         </div>
-      </form>
+        {actionData?.formErrors?.name ? (
+          <p style={{ color: "red" }}>{actionData?.formErrors?.name}</p>
+        ) : null}
+        {actionData?.formErrors?.startTime ? (
+          <p style={{ color: "red" }}>{actionData?.formErrors?.startTime}</p>
+        ) : null}
+      </Form>
     </div>
   );
 }

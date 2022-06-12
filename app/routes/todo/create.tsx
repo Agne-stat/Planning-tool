@@ -1,44 +1,45 @@
 import { Link } from "@remix-run/react/node_modules/react-router-dom";
+import { Form, useActionData } from "@remix-run/react";
 import  { ActionFunction, LinksFunction, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
 import stylesUrl from "~/styles/index.css";
-// import { useEffect, useState } from "react";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
+const validateTodo = (name:string) => {
+  if (!name) {
+    return "Field can not be empty";
+  } 
+};
+
 export const action: ActionFunction = async ({
   request,
 }) => {
+
   const form = await request.formData();
+  const data = Object.fromEntries(form);
   const name = form.get("name");
-  if (
-    typeof name !== "string" || name.length === 0) {
-    throw new Error(`Form not submitted correctly.`);
-  }
 
+  const formErrors = {
+    name: validateTodo(data.name),
+  };
+
+  if (Object.values(formErrors).some(Boolean)) return { formErrors };
   const fields = { name };
-
   await db.todo.create({ data: fields });
+
   return redirect(`/todo`);
 };
 
-
-
-
 export default function CreateTodoRoute() {
-  // const [errorMessage, setErrorMessage]= useState("")
-
-  // useEffect(()=> {
-    
-  // })
-
+  const actionData = useActionData();
   return (
     <div >
       <h3>New todo:</h3>
-      <form method="post">
+      <Form method="post">
         <div className="form">
           <label>
             Task: 
@@ -55,8 +56,10 @@ export default function CreateTodoRoute() {
             </Link>
           </button>
         </div>
-        <p>{Error}</p>
-      </form>
+        {actionData?.formErrors?.name ? (
+          <p style={{ color: "red" }}>{actionData?.formErrors?.name}</p>
+        ) : null}
+      </Form>
     </div>
   );
 }
