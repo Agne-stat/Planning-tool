@@ -3,6 +3,7 @@ import  { ActionFunction, LinksFunction, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
 import stylesUrl from "~/styles/index.css";
+// import { useEffect, useState } from "react";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
@@ -13,9 +14,8 @@ export const action: ActionFunction = async ({
 }) => {
   const form = await request.formData();
   const name = form.get("name");
-
   if (
-    typeof name !== "string") {
+    typeof name !== "string" || name.length === 0) {
     throw new Error(`Form not submitted correctly.`);
   }
 
@@ -25,7 +25,16 @@ export const action: ActionFunction = async ({
   return redirect(`/todo`);
 };
 
+
+
+
 export default function CreateTodoRoute() {
+  // const [errorMessage, setErrorMessage]= useState("")
+
+  // useEffect(()=> {
+    
+  // })
+
   return (
     <div >
       <h3>New todo:</h3>
@@ -46,6 +55,7 @@ export default function CreateTodoRoute() {
             </Link>
           </button>
         </div>
+        <p>{Error}</p>
       </form>
     </div>
   );
